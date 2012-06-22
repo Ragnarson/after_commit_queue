@@ -7,8 +7,6 @@ Rails plugin which allows to run callbacks after database transaction is committ
 
 When using [state_machine](https://github.com/pluginaweek/state_machine) it's hard to run a callback on event after the transaction is committed.
 
-In normal ca
-
 after_commit_queue plugin addresses this problem.
 
 ### Installation

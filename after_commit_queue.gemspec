@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.summary     = "after_commit queue"
   s.description = "Plugin for running methods on ActiveRecord models after record is committed"
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 3.0"

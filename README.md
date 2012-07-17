@@ -53,16 +53,13 @@ end
 
 To fetch & test the library for development, do:
 
-    $ git clone https://github.com/ragnarson/after_commit_queue
+    $ git clone https://github.com/Ragnarson/after_commit_queue
     $ cd after_commit_queue
     $ bundle
 
 #### Running tests
 
-    # Preparing test database
-    $ cd test/dummy && rake db:migrate && rake db:test:prepare
-    $ cd ../..
-    # Running tests
+    # Before each test run, the database will be created and migrated automatically
     $ bundle exec rake test
 
 If you want to contribute, please:

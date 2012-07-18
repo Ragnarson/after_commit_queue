@@ -5,7 +5,7 @@ class AfterCommitQueueTest < ActiveSupport::TestCase
     @server = Server.new
   end
 
-  test "run after methods after transaction is committed" do
+  test "run methods after transaction is committed" do
     assert !@server.started
 
     @server.transaction do

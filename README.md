@@ -19,7 +19,7 @@ gem 'after_commit_queue'
 
 ### Usage
 
-Include AfterCommitQueue module in your ActiveRecord model and you're ready to go.
+Include AfterCommitQueue module in your ActiveRecord model and you're ready to go. When registering a hook with run_after_commit you can supply either a method symbol or a block. No parameter is supplied when using the block form.
 
 ```ruby
 class Server < ActiveRecord::Base
@@ -41,7 +41,9 @@ class Server < ActiveRecord::Base
   end
 
   def schedule_stop
-    run_after_commit(:stop_server)
+    run_after_commit do
+      stop_server
+    end
   end
 
   def start_server; @started = true end

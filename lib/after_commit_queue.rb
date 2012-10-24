@@ -3,6 +3,7 @@ module AfterCommitQueue
 
   included do
     after_commit :_run_after_commit_queue
+    after_rollback :_clear_after_commit_queue
   end
 
   protected
@@ -27,5 +28,9 @@ module AfterCommitQueue
   # Returns: Array with methods to run
   def _after_commit_queue
     @after_commit_queue ||= []
+  end
+
+  def _clear_after_commit_queue
+    @after_commit_queue.clear
   end
 end

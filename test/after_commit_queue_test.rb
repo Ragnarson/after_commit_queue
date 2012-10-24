@@ -36,4 +36,17 @@ class AfterCommitQueueTest < ActiveSupport::TestCase
     assert !@server.started
     assert @server.stopped
   end
+
+  test "clears queue after rollback" do
+    assert !@server.started
+
+    Server.transaction do
+      @server.start!
+      assert !@server.started
+      raise ActiveRecord::Rollback
+    end
+    
+    assert @server.__send__(:_after_commit_queue).empty?
+    assert !@server.started
+  end
 end

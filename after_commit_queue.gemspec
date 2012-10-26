@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.name        = "after_commit_queue"
   s.version     = AfterCommitQueue::VERSION
   s.authors     = ["Grzegorz Kołodziejczyk", "Mariusz Pietrzyk"]
-  s.email       = ["shelly-devs@ragnarson.com"]
-  s.homepage    = "https://github.com/ragnarson/after_commit_queue"
+  s.email       = ["devs@shellycloud.com"]
+  s.homepage    = "https://github.com/shellycloud/after_commit_queue"
   s.summary     = "after_commit queue"
   s.description = "Plugin for running methods on ActiveRecord models after record is committed"
 

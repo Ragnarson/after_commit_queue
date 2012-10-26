@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    after_commit_queue (1.0.0)
+    after_commit_queue (1.0.1)
       rails (~> 3.0)
 
 GEM

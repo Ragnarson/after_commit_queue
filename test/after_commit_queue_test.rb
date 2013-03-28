@@ -45,8 +45,12 @@ class AfterCommitQueueTest < ActiveSupport::TestCase
       assert !@server.started
       raise ActiveRecord::Rollback
     end
-    
+
     assert @server.__send__(:_after_commit_queue).empty?
     assert !@server.started
+  end
+
+  test "clears queue even when no callback was enqueued" do
+    @server.rolledback!(false)
   end
 end

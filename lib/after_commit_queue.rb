@@ -31,6 +31,6 @@ module AfterCommitQueue
   end
 
   def _clear_after_commit_queue
-    @after_commit_queue.clear
+    _after_commit_queue.clear
   end
 end

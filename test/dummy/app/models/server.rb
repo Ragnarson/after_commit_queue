@@ -1,7 +1,7 @@
 class Server < ActiveRecord::Base
   include AfterCommitQueue
 
-  attr_accessor :started, :stopped, :meditating
+  attr_accessor :started, :stopped, :meditating, :uninstalled
 
   state_machine :state, :initial => :pending do
     after_transition :pending => :running, :do => :schedule_start
@@ -11,6 +11,7 @@ class Server < ActiveRecord::Base
     event(:start) { transition :pending => :running }
     event(:stop) { transition :running => :turned_off }
     event(:crash) { transition :running => :crashed }
+    event(:uninstall) { transition :turned_off => :uninstalled }
   end
 
   def schedule_start

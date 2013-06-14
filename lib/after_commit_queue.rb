@@ -6,6 +6,13 @@ module AfterCommitQueue
     after_rollback :_clear_after_commit_queue
   end
 
+  # Public: Add method to after commit queue
+  def run_after_commit(method = nil, &block)
+    _after_commit_queue << Proc.new { self.send(method) } if method
+    _after_commit_queue << block if block
+    true
+  end
+
   protected
 
   # Protected: Is called as after_commit callback
@@ -15,13 +22,6 @@ module AfterCommitQueue
       action.call
     end
     @after_commit_queue.clear
-  end
-
-  # Protected: Add method to after commit queue
-  def run_after_commit(method = nil, &block)
-    _after_commit_queue << Proc.new { self.send(method) } if method
-    _after_commit_queue << block if block
-    true
   end
 
   # Protected: Return after commit queue

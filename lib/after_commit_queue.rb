@@ -19,7 +19,7 @@ module AfterCommitQueue
   # runs methods from the queue and clears the queue afterwards
   def _run_after_commit_queue
     _after_commit_queue.each do |action|
-      action.call
+      self.instance_eval &action
     end
     @after_commit_queue.clear
   end

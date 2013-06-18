@@ -28,6 +28,19 @@ class AfterCommitQueueTest < ActiveSupport::TestCase
     assert @server.meditating
   end
 
+  test "external observer changes state" do
+    @server.start!
+    @server.stop!
+    assert !@server.uninstalled
+
+    @server.transaction do
+      @server.uninstall!
+      assert !@server.uninstalled
+    end
+
+    assert @server.uninstalled
+  end
+  
   test "clear queue after methods from are called" do
     @server.start!
     @server.started = false

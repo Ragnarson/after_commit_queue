@@ -16,7 +16,5 @@ gemfile:
   - gemfiles/rails_3.2.gemfile
   - gemfiles/rails_4.0.gemfile
   - gemfiles/rails_4.1.gemfile
-  - gemfiles/rails_4.0_sms.gemfile
-  - gemfiles/rails_3.2_sms.gemfile
   - gemfiles/rails_4.1_sms.gemfile
   - gemfiles/rails_4.2_sms.gemfile

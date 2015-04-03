@@ -1,10 +1,20 @@
 #!/usr/bin/env rake
+require 'rubygems'
+require 'bundler/setup'
 
-begin
-  require 'bundler/setup'
-rescue LoadError
-  puts 'You must `gem install bundler` and `bundle install` to run rake tasks'
+task :default => :spec
+
+# Run spec
+task :spec do
+  system 'bundle exec rspec spec'
 end
+
+# Build gem
+task :build do
+  system 'gem build after_commit_queue.gemspec'
+end
+
+# Generate doc
 begin
   require 'rdoc/task'
 rescue LoadError
@@ -20,25 +30,3 @@ RDoc::Task.new(:rdoc) do |rdoc|
   rdoc.rdoc_files.include('README.rdoc')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
-
-Bundler::GemHelper.install_tasks
-
-require 'rake/testtask'
-
-Rake::TestTask.new(:test) do |t|
-  t.libs << 'lib'
-  t.libs << 'test'
-  t.pattern = 'test/**/*_test.rb'
-  t.verbose = false
-end
-
-
-task :default => :test
-
-APP_RAKEFILE = File.expand_path("../test/dummy/Rakefile", __FILE__)
-load 'rails/tasks/engine.rake'
-
-Rake::Task['test'].enhance ['app:db:drop']
-Rake::Task['test'].enhance ['app:db:create']
-Rake::Task['test'].enhance ['app:db:migrate']
-Rake::Task['test'].enhance ['app:db:test:prepare']

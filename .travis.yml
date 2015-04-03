@@ -1,0 +1,22 @@
+language: ruby
+script: bundle exec rspec spec
+sudo: false
+cache: bundler
+env:
+  - DB=sqlite3
+  - DB=sqlite3mem
+  - DB=postgresql
+  - DB=mysql
+rvm:
+  - 2.2
+  - 2.1
+  - 2.0.0
+  - 1.9.3
+gemfile:
+  - gemfiles/rails_3.2.gemfile
+  - gemfiles/rails_4.0.gemfile
+  - gemfiles/rails_4.1.gemfile
+  - gemfiles/rails_4.0_sms.gemfile
+  - gemfiles/rails_3.2_sms.gemfile
+  - gemfiles/rails_4.1_sms.gemfile
+  - gemfiles/rails_4.2_sms.gemfile

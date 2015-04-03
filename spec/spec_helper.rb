@@ -32,7 +32,7 @@ begin
   require 'state_machine'
   state_machine = true
 rescue LoadError
-  require 'state_machines'
+  require 'state_machines-activerecord'
   state_machine = false
 end
 
@@ -49,6 +49,10 @@ else
   end
 
   require 'rails/observers/activerecord/active_record'
+
+  if Rails::VERSION::MINOR >= 2
+    ActiveRecord::Base.raise_in_transactional_callbacks = true
+  end
 end
 
 require 'support/server'
@@ -60,7 +64,6 @@ Server.instantiate_observers
 
 
 RSpec.configure do |config|
-  config.fixture_path               = "#{plugin_test_dir}/fixtures"
   config.infer_spec_type_from_file_location!
 
   config.after(:suite) do

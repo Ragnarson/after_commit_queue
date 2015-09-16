@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    after_commit_queue (1.1.0)
-      activesupport (>= 3.0)
+    after_commit_queue (1.2.0)
+      activerecord (>= 3.0)
       state_machine
 
 GEM

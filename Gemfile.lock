@@ -1,8 +1,9 @@
 PATH
   remote: .
   specs:
-    after_commit_queue (1.1.0)
-      rails (>= 3.0)
+    after_commit_queue (1.2.0)
+      activerecord (>= 3.0)
+      state_machine
 
 GEM
   remote: http://rubygems.org/
@@ -88,6 +89,7 @@ PLATFORMS
 
 DEPENDENCIES
   after_commit_queue!
+  rails (>= 3.0)
   rails-observers
   sqlite3
   state_machine

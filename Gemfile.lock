@@ -3,7 +3,6 @@ PATH
   specs:
     after_commit_queue (1.2.0)
       activerecord (>= 3.0)
-      state_machine
 
 GEM
   remote: http://rubygems.org/

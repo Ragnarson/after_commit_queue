@@ -18,7 +18,8 @@ module AfterCommitQueue
   # Protected: Is called as after_commit callback
   # runs methods from the queue and clears the queue afterwards
   def _run_after_commit_queue
-    _after_commit_queue.each do |action|
+    while _after_commit_queue.present?
+      action = _after_commit_queue.pop
       self.instance_eval &action
     end
     @after_commit_queue.clear
